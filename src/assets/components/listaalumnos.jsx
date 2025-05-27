@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../../src/App.css";
 
 const alumnosEjemplo = [
   { lu: "APU001", nombre: "María", apellido: "Gómez", curso: "3°A" },
@@ -8,9 +9,9 @@ const alumnosEjemplo = [
 
 function ListaAlumnos() {
   return (
-    <div>
+    <div className="lista-alumnos">
       <h2>Lista de Alumnos</h2>
-      <table border="1" cellPadding="10">
+      <table className="tabla-alumnos">
         <thead>
           <tr>
             <th>LU</th>
@@ -28,7 +29,9 @@ function ListaAlumnos() {
               <td>{alumno.apellido}</td>
               <td>{alumno.curso}</td>
               <td>
-                <Link to={`/alumno/${alumno.lu}`}>Ver detalle</Link>
+                <Link to={`/alumno/${alumno.lu}`} className="detalle-link">
+                  Ver detalle
+                </Link>
               </td>
             </tr>
           ))}

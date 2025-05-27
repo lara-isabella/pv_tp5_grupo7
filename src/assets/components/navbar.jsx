@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import "../../App.css"; 
 
 function NavBar() {
   return (
-    <nav style={{ padding: "10px", backgroundColor: "#eee" }}>
-      <Link to="/" style={{ marginRight: "15px" }}>Inicio</Link>
-      <Link to="/alumnos" style={{ marginRight: "15px" }}>Lista de Alumnos</Link>
-      <Link to="/nuevo" style={{ marginRight: "15px" }}>Nuevo Alumno</Link>
-      <Link to="/acerca">Acerca de</Link> {/* futura ruta */}
+    <nav className="navbar">
+      <Link to="/" className="nav-link">Inicio</Link>
+      <Link to="/alumnos" className="nav-link">Lista de Alumnos</Link>
+      <Link to="/nuevo" className="nav-link">Nuevo Alumno</Link>
+      <Link to="/acerca" className="nav-link">Acerca de</Link>
     </nav>
   );
 }

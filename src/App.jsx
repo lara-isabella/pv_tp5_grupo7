@@ -4,6 +4,7 @@ import ListaAlumnos from "./assets/components/listaalumnos";
 import IngresoAlumnos from "./assets/components/ingresoalumnos";
 import NavBar from "./assets/components/navbar";
 import DetalleAlumno from "./assets/components/detallealumno"; 
+import "./App.css";
 
 function App() {
   return (
@@ -20,3 +21,4 @@ function App() {
 }
 
 export default App;
+
