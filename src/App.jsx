@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import { Routes, Route } from "react-router-dom"
-import Inicio from "./assets/components/inicio"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Inicio from "./assets/components/inicio";
+import ListaAlumnos from "./assets/components/listaalumnos";
+import IngresoAlumnos from "./assets/components/ingresoalumnos";
+import NavBar from "./assets/components/navbar";
 
 function App() {
-
   return (
-      <div>
-        <Routes>
-        <Route path="/" element={ <Inicio /> } />
-        </Routes>
-      </div>
-      
-  )
+    <Router>
+      <NavBar /> {/* Menú visible en todas las vistas */}
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/alumnos" element={<ListaAlumnos />} />
+        <Route path="/nuevo" element={<IngresoAlumnos />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

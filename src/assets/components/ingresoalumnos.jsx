@@ -1,81 +1,131 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState } from "react";
 
-function IngresoAlumnos({ alAgregar, alModificar, alumnoSeleccionado }) {
-    const [luContador, setLuContador] = useState(1);
-    const [nombre, setNombre] = useState("");
-    const [apellido, setApellido] = useState("");
-    const [curso, setCurso] = useState("");
-    const [email, setEmail] = useState("");
-    const [domicilio, setDomicilio] = useState("");
-    const [telefono, setTelefono] = useState("");
-    const [estado, setEstado] = useState(true);
-    const [error, setError] = useState("");
+function IngresoAlumnos({ alAgregar }) {
+  const [lu, setLu] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [curso, setCurso] = useState("");
+  const [email, setEmail] = useState("");
+  const [domicilio, setDomicilio] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [estado, setEstado] = useState(true);
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        if (alumnoSeleccionado) {
-            setLuContador(alumnoSeleccionado.lu);
-            setNombre(alumnoSeleccionado.nombre);
-            setApellido(alumnoSeleccionado.apellido);
-            setCurso(alumnoSeleccionado.curso);
-            setEmail(alumnoSeleccionado.email);
-            setDomicilio(alumnoSeleccionado.domicilio);
-            setTelefono(alumnoSeleccionado.telefono);
-            setEstado(alumnoSeleccionado.estado);
-        } else {
-            setLuContador(1);
-            setNombre("");
-            setApellido("");
-            setCurso("");
-            setEmail("");
-            setDomicilio("");
-            setTelefono("");
-        }
-    }, [alumnoSeleccionado]);
+  const manejarSubmit = (e) => {
+    e.preventDefault();
 
-    // Agregar producto nuevo
-    const manejarSubmit = useCallback((evento) => {
-        evento.preventDefault();
+    if (!lu || !nombre || !apellido || !curso || !email) {
+      setError("Por favor complete todos los campos obligatorios.");
+      return;
+    }
 
-        if (!nombre || !apellido || !curso || !email) {
-            setError("Por favor complete todos los campos obligatorios.");
-            return;
-        }
+    setError("");
 
-        // Si pasa la validación, limpiamos el error
-        setError("");
-    
-        const nuevoAlumno = {
-            lu: luContador,
-            nombre,
-            apellido,
-            curso,
-            email,
-            domicilio,
-            telefono,
-            estado
-        };
+    const nuevoAlumno = {
+      lu,
+      nombre,
+      apellido,
+      curso,
+      email,
+      domicilio,
+      telefono,
+      estado,
+    };
 
-        alAgregar(nuevoAlumno);
-        setLuContador(luContador + 1);
-        limpiarFormulario();
-    }, [idContador, nombre, marca, precioUnit, descuento, precioDescuento, stock, estado, alAgregar]);
+    alAgregar?.(nuevoAlumno);
+    limpiarFormulario();
+  };
 
-    // Limpiar formulario después de agregar o modificar
-    const limpiarFormulario = useCallback(() => {
-        setNombre("");
-        setApellido("");
-        setCurso("");
-        setEmail("");
-        setDomicilio("");
-        setTelefono("");
-        setEstado(true);
-    }, [luContador]);
+  const limpiarFormulario = () => {
+    setLu("");
+    setNombre("");
+    setApellido("");
+    setCurso("");
+    setEmail("");
+    setDomicilio("");
+    setTelefono("");
+    setEstado(true);
+  };
 
-    return (
+  return (
+    <div>
+      <h1>Agregar Nuevo Alumno</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={manejarSubmit}>
         <div>
-            
+          <label>LU:</label>
+          <input
+            type="text"
+            value={lu}
+            onChange={(e) => setLu(e.target.value)}
+            required
+          />
         </div>
-    );
+        <div>
+          <label>Nombre:</label>
+          <input
+            type="text"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Apellido:</label>
+          <input
+            type="text"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Curso:</label>
+          <input
+            type="text"
+            value={curso}
+            onChange={(e) => setCurso(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Domicilio:</label>
+          <input
+            type="text"
+            value={domicilio}
+            onChange={(e) => setDomicilio(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Teléfono:</label>
+          <input
+            type="tel"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Estado:</label>
+          <input
+            type="checkbox"
+            checked={estado}
+            onChange={(e) => setEstado(e.target.checked)}
+          />
+          Activo
+        </div>
+        <button type="submit">Agregar Alumno</button>
+      </form>
+    </div>
+  );
 }
 
-export default IngresoAlumnos
+export default IngresoAlumnos;
