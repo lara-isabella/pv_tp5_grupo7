@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const alumnosEjemplo = [
   { lu: "APU001", nombre: "María", apellido: "Gómez", curso: "3°A" },
@@ -16,6 +17,7 @@ function ListaAlumnos() {
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Curso</th>
+            <th>Detalle</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +27,9 @@ function ListaAlumnos() {
               <td>{alumno.nombre}</td>
               <td>{alumno.apellido}</td>
               <td>{alumno.curso}</td>
+              <td>
+                <Link to={`/alumno/${alumno.lu}`}>Ver detalle</Link>
+              </td>
             </tr>
           ))}
         </tbody>
