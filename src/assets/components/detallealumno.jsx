@@ -1,11 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 
-const alumnosEjemplo = [
-  { lu: "APU001", nombre: "María", apellido: "Gómez", curso: "3°A", email: "maria@gmail.com", domicilio: "Calle 123", telefono: "12345678", estado: true },
-  { lu: "APU002", nombre: "Juan", apellido: "Pérez", curso: "2°B", email: "juan@gmail.com", domicilio: "Calle 456", telefono: "87654321", estado: true },
-];
-
 function DetalleAlumno() {
   const { lu } = useParams();
 
