@@ -1,16 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const alumnosEjemplo = [
-  { lu: "APU001", nombre: "María", apellido: "Gómez", curso: "3°A" },
-  { lu: "APU002", nombre: "Juan", apellido: "Pérez", curso: "2°B" },
-];
-
 function ListaAlumnos() {
   return (
     <div>
       <h2>Lista de Alumnos</h2>
-      <table border="1" cellPadding="10">
+      <table>
         <thead>
           <tr>
             <th>LU</th>
