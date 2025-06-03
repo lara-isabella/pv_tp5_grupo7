@@ -1,59 +1,75 @@
 // App.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Inicio from "./assets/components/inicio";
 import ListaAlumnos from "./assets/components/listaalumnos";
-import IngresoAlumnos from "./assets/components/ingresoAlumnos";
-import NavBar from "./assets/components/navBar";
-import DetalleAlumno from "./assets/components/detalleAlumno"; 
+import IngresoAlumnos from "./assets/components/ingresoalumnos";
+import NavBar from "./assets/components/navbar";
+import DetalleAlumno from "./assets/components/detallealumno"; 
 import AcercaDe from "./assets/components/acercaDe";
 import EditarAlumno from "./assets/components/editaralumno";
+import Papelera from "./assets/components/papelera";
 
 function App() {
-  const [alumnos, setAlumnos] = useState([]); // Estado global para almacenar alumnos
-  const [mensaje, setMensaje] = useState(""); // Estado para mostrar mensajes (p.ej. confirmaciones)
+  const [alumnos, setAlumnos] = useState([]);
+  const [mensaje, setMensaje] = useState("");
+  const [papelera, setPapelera] = useState([]);
 
   const agregarAlumno = (nuevoAlumno) => {
     setAlumnos((prev) => [...prev, nuevoAlumno]);
+    setMensaje(`Alumno ${nuevoAlumno.nombre} agregado exitosamente.`);
   };
+
+  useEffect(() => {
+    if (mensaje) {
+      const timer = setTimeout(() => setMensaje(""), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [mensaje]);
 
   return (
     <Router>
       <NavBar />
 
-      {/*Mostrar mensaje si existe*/}
-      {mensaje && <div className="mensaje">{mensaje}</div>}
+      {mensaje && <div className="alert alert-success text-center">{mensaje}</div>}
 
       <Routes>
-        {/*Ruta principal*/}
+        <Route
+          path="/papelera"
+          element={
+            <Papelera
+              papelera={papelera}
+              setAlumnos={setAlumnos}
+              setPapelera={setPapelera}
+              setMensaje={setMensaje}
+            />
+          }
+        />
+
         <Route path="/" element={<Inicio />} />
 
-        {/*para listar alumnos con funciones para eliminar y mostrar mensajes */}
         <Route 
           path="/alumnos" 
           element={
             <ListaAlumnos 
               alumnos={alumnos} 
               setAlumnos={setAlumnos} 
-              setMensaje={setMensaje} 
+              setMensaje={setMensaje}
+              setPapelera={setPapelera}
             />
           } 
         />
 
-        {/*para agregar nuevo alumno */}
         <Route path="/nuevo" element={<IngresoAlumnos alAgregar={agregarAlumno} />} />
 
-        {/*para ver detalles del alumno, parámetro id es el LU */}
-        <Route path="/alumnos/:id" element={<DetalleAlumno alumnos={alumnos} />} />
+        <Route path="/alumnos/:lu" element={<DetalleAlumno alumnos={alumnos} />} />
 
-        {/*para editar alumno, parámetro id es el LU */}
         <Route 
-          path="/alumnos/:id/editar" 
+          path="/alumnos/:lu/editar" 
           element={<EditarAlumno alumnos={alumnos} setAlumnos={setAlumnos} />} 
         />
 
-        {/*para página 'Acerca de' */}
         <Route path="/acerca" element={<AcercaDe />} />
       </Routes>
     </Router>
@@ -61,4 +77,3 @@ function App() {
 }
 
 export default App;
-
