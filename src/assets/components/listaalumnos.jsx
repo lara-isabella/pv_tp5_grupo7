@@ -1,7 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import EliminarAlumno from "./eliminaralumno";
 
-function ListaAlumnos({ alumnos }) {
+function ListaAlumnos({ alumnos, setAlumnos, setMensaje }) {
   return (
     <div>
       <h2>Lista de Alumnos</h2>
@@ -16,6 +16,8 @@ function ListaAlumnos({ alumnos }) {
               <th>Apellido</th>
               <th>Curso</th>
               <th>Detalle</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +29,17 @@ function ListaAlumnos({ alumnos }) {
                 <td>{alumno.curso}</td>
                 <td>
                   <Link to={`/alumno/${alumno.lu}`}>Ver detalle</Link>
+                </td>
+                <td>
+                  <Link to={`/alumno/${alumno.lu}/editar`}>Editar</Link>
+                </td>
+                <td>
+                  <EliminarAlumno
+                    lu={alumno.lu}
+                    alumnos={alumnos}
+                    setAlumnos={setAlumnos}
+                    setMensaje={setMensaje}
+                  />
                 </td>
               </tr>
             ))}

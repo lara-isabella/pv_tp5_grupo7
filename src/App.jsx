@@ -10,6 +10,7 @@ import AcercaDe from "./assets/components/acercaDe";
 
 function App() {
   const [alumnos, setAlumnos] = useState([]); // Estado global
+  const [mensaje, setMensaje] = useState(""); // Estado para mensajes
 
   const agregarAlumno = (nuevoAlumno) => {
     setAlumnos((prev) => [...prev, nuevoAlumno]);
@@ -18,9 +19,22 @@ function App() {
   return (
     <Router>
       <NavBar />
+      {/* Mostrar mensaje si existe */}
+      {mensaje && <div className="mensaje">{mensaje}</div>}
+
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route path="/alumnos" element={<ListaAlumnos alumnos={alumnos} />} />
+        {/* Se pasa setAlumnos y setMensaje para que ListaAlumnos pueda eliminar y mostrar mensaje */}
+        <Route 
+          path="/alumnos" 
+          element={
+            <ListaAlumnos 
+              alumnos={alumnos} 
+              setAlumnos={setAlumnos} 
+              setMensaje={setMensaje} 
+            />
+          } 
+        />
         <Route path="/nuevo" element={<IngresoAlumnos alAgregar={agregarAlumno} />} />
         <Route path="/alumno/:lu" element={<DetalleAlumno alumnos={alumnos} />} />
         <Route path="/acerca" element={<AcercaDe />} />
@@ -30,3 +44,4 @@ function App() {
 }
 
 export default App;
+
