@@ -1,19 +1,25 @@
-# TRABAJO PRACTICO N5
+# TRABAJO PRACTICO TP5
 
-## Descripcion
-Este trabajo consiste en la aplicacion de conocimientos para crear una web para la gestión de productos utilizando React, especificamente React Router. La aplicación permite a los usuarios interactuar con la pagina manera interactiva.
-Ademas, contamos con la implementacion de el framework Bootstrap como un adicional para la estetica y acompañamiento de la funcionalidad basica de la pagina.
+## Descripción
+Este trabajo práctico consiste en la creación de una aplicación web para la gestión de alumnos utilizando React y Vite. La aplicación permite a los usuarios agregar, editar, eliminar y visualizar de manera interactiva la información de cada alumno. Además, la navegación entre vistas se realiza mediante React Router DOM, lo que proporciona una experiencia de usuario fluida y organizada.
 
 ## Funcionalidades
-- **Barra de Navegacion**  
-- **Agregar alumnos** mediante un formulario.  
-- **Visualizar lista de alumnos ingresados** en una pagina especifica.
-- **Visualizar y editar alumnos** por Libreta Universitaria 
-- **Eliminar alumnos** con un botón.  
+- **Inicio:** Página de bienvenida que presenta el sistema de gestión de alumnos.
+- **Lista de Alumnos:** Muestra todos los alumnos en forma de tabla o tarjetas, incluyendo botones para:
+  - **Editar:** Navega a `/alumnos/:id/editar` para modificar los datos.
+  - **Eliminar:** Permite borrar un alumno, previa confirmación.
+  - **Ver Detalles:** Navega a `/alumno/:lu` para observar la información completa.
+- **Agregar Alumno:** Formulario para crear un nuevo alumno.
+- **Editar Alumno:** Formulario precargado para modificar la información de un alumno existente.
+- **Detalle del Alumno:** Vista detallada de cada alumno.
+- **Navegación General:** Menú accesible desde todas las vistas, con enlaces a Inicio, Lista de Alumnos, Nuevo Alumno y Acerca de.
 
-## Integrantes del grupo  
+## Integrantes del grupo
 - **Lara Colazo** - [@lara-isabella](https://github.com/lara-isabella)  
 - **Luisana Pereira** - [@lulipereira](https://github.com/lulipereira)  
 - **Yamila Quipildor** - [@yamqp](https://github.com/yamqp)  
 - **Lautaro Cari** - [@LauchaS2](https://github.com/LauchaS2)  
-- **Tomas Obeide** - [@TomiObeide](https://github.com/TomiObeide)  
+- **Tomas Obeide** - [@TomiObeide](https://github.com/TomiObeide)
+
+
+
