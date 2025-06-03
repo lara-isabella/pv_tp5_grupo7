@@ -32,7 +32,7 @@ function ListaAlumnos({ alumnos, setAlumnos, setMensaje, setPapelera }) {
                   <Link
                     to={`/alumnos/${alumno.lu}`}
                     className="btn btn-sm"
-                    style={{ backgroundColor: "#f8c5d2", color: "#880044" }}
+                    style={{ backgroundColor: "#f497b6", color: "white" }}
                   >
                     Ver detalle
                   </Link>

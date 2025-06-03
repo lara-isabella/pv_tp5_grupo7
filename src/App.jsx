@@ -1,4 +1,3 @@
-// App.jsx
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -65,10 +64,7 @@ function App() {
 
         <Route path="/alumnos/:lu" element={<DetalleAlumno alumnos={alumnos} />} />
 
-        <Route 
-          path="/alumnos/:lu/editar" 
-          element={<EditarAlumno alumnos={alumnos} setAlumnos={setAlumnos} />} 
-        />
+        <Route path="/alumnos/:lu/editar" element={<EditarAlumno alumnos={alumnos} setAlumnos={setAlumnos} />} />
 
         <Route path="/acerca" element={<AcercaDe />} />
       </Routes>
