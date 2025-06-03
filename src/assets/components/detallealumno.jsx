@@ -1,10 +1,9 @@
-// detalleAlumno.jsx
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 
 function DetalleAlumno({ alumnos }) {
-  const { lu } = useParams();
-  const alumno = alumnos.find((a) => a.lu === lu);
+  const { id } = useParams(); 
+  const alumno = alumnos.find((a) => String(a.lu) === String(id)); 
 
   if (!alumno) {
     return (
@@ -30,3 +29,4 @@ function DetalleAlumno({ alumnos }) {
 }
 
 export default DetalleAlumno;
+
