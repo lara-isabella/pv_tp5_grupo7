@@ -1,11 +1,10 @@
+// detalleAlumno.jsx
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 
-function DetalleAlumno() {
+function DetalleAlumno({ alumnos }) {
   const { lu } = useParams();
-
-  // Buscar alumno por LU
-  const alumno = alumnosEjemplo.find(a => a.lu === lu);
+  const alumno = alumnos.find((a) => a.lu === lu);
 
   if (!alumno) {
     return (
