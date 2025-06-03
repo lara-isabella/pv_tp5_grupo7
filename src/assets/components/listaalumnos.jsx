@@ -1,3 +1,4 @@
+// listaalumnos.jsx
 import { Link } from "react-router-dom";
 import EliminarAlumno from "./eliminaralumno";
 
@@ -28,10 +29,12 @@ function ListaAlumnos({ alumnos, setAlumnos, setMensaje }) {
                 <td>{alumno.apellido}</td>
                 <td>{alumno.curso}</td>
                 <td>
-                  <Link to={`/alumno/${alumno.lu}`}>Ver detalle</Link>
+                  {/*Link a detalles con /alumnos/:id */}
+                  <Link to={`/alumnos/${alumno.lu}`}>Ver detalle</Link>
                 </td>
                 <td>
-                  <Link to={`/alumno/${alumno.lu}/editar`}>Editar</Link>
+                  {/*Link a editar con /alumnos/:id/editar */}
+                  <Link to={`/alumnos/${alumno.lu}/editar`}>Editar</Link>
                 </td>
                 <td>
                   <EliminarAlumno
@@ -51,3 +54,5 @@ function ListaAlumnos({ alumnos, setAlumnos, setMensaje }) {
 }
 
 export default ListaAlumnos;
+
+
