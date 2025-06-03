@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function EditarAlumno({ alumnos, setAlumnos }) {
-  const { id } = useParams(); 
+  const { lu } = useParams(); 
   const navigate = useNavigate();
 
-  //Buscar alumno con LU = id
-  const alumno = alumnos.find((a) => a.lu === id);
+  //Buscar alumno con LU
+  const alumno = alumnos.find((a) => a.lu === lu);
 
   const [formData, setFormData] = useState({
     lu: "",
@@ -36,7 +36,7 @@ function EditarAlumno({ alumnos, setAlumnos }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setAlumnos((prev) => prev.map((a) => (a.lu === id ? formData : a)));
+    setAlumnos((prev) => prev.map((a) => (a.lu === lu ? formData : a)));
 
     navigate("/alumnos");
   };
