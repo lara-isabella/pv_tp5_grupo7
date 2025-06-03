@@ -1,7 +1,8 @@
-import React from "react";
+// listaalumnos.jsx
 import { Link } from "react-router-dom";
+import EliminarAlumno from "./eliminaralumno";
 
-function ListaAlumnos({ alumnos }) {
+function ListaAlumnos({ alumnos, setAlumnos, setMensaje }) {
   return (
     <div>
       <h2>Lista de Alumnos</h2>
@@ -16,6 +17,8 @@ function ListaAlumnos({ alumnos }) {
               <th>Apellido</th>
               <th>Curso</th>
               <th>Detalle</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +29,20 @@ function ListaAlumnos({ alumnos }) {
                 <td>{alumno.apellido}</td>
                 <td>{alumno.curso}</td>
                 <td>
-                  <Link to={`/alumno/${alumno.lu}`}>Ver detalle</Link>
+                  {/*Link a detalles con /alumnos/:id */}
+                  <Link to={`/alumnos/${alumno.lu}`}>Ver detalle</Link>
+                </td>
+                <td>
+                  {/*Link a editar con /alumnos/:id/editar */}
+                  <Link to={`/alumnos/${alumno.lu}/editar`}>Editar</Link>
+                </td>
+                <td>
+                  <EliminarAlumno
+                    lu={alumno.lu}
+                    alumnos={alumnos}
+                    setAlumnos={setAlumnos}
+                    setMensaje={setMensaje}
+                  />
                 </td>
               </tr>
             ))}
@@ -38,3 +54,5 @@ function ListaAlumnos({ alumnos }) {
 }
 
 export default ListaAlumnos;
+
+
