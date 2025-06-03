@@ -5,7 +5,7 @@ import Inicio from "./assets/components/inicio";
 import ListaAlumnos from "./assets/components/listaalumnos";
 import IngresoAlumnos from "./assets/components/ingresoalumnos";
 import NavBar from "./assets/components/navbar";
-import DetalleAlumno from "./assets/components/detallealumno"; 
+import DetalleAlumno from "./assets/components/detallealumno";
 import AcercaDe from "./assets/components/acercaDe";
 import EditarAlumno from "./assets/components/editaralumno";
 import Papelera from "./assets/components/papelera";
@@ -16,8 +16,15 @@ function App() {
   const [papelera, setPapelera] = useState([]);
 
   const agregarAlumno = (nuevoAlumno) => {
+    const existeLU = alumnos.some((alumno) => alumno.lu === nuevoAlumno.lu);
+    if (existeLU) {
+      setMensaje(`El LU ${nuevoAlumno.lu} ya está en uso.`);
+      return false; 
+    }
+
     setAlumnos((prev) => [...prev, nuevoAlumno]);
     setMensaje(`Alumno ${nuevoAlumno.nombre} agregado exitosamente.`);
+    return true; 
   };
 
   useEffect(() => {
@@ -30,9 +37,7 @@ function App() {
   return (
     <Router>
       <NavBar />
-
       {mensaje && <div className="alert alert-success text-center">{mensaje}</div>}
-
       <Routes>
         <Route
           path="/papelera"
@@ -45,9 +50,7 @@ function App() {
             />
           }
         />
-
         <Route path="/" element={<Inicio />} />
-
         <Route 
           path="/alumnos" 
           element={
@@ -59,13 +62,17 @@ function App() {
             />
           } 
         />
-
-        <Route path="/nuevo" element={<IngresoAlumnos alAgregar={agregarAlumno} />} />
-
+        <Route 
+          path="/nuevo" 
+          element={
+            <IngresoAlumnos 
+              alAgregar={agregarAlumno} 
+              alumnos={alumnos} 
+            />
+          } 
+        />
         <Route path="/alumnos/:lu" element={<DetalleAlumno alumnos={alumnos} />} />
-
         <Route path="/alumnos/:lu/editar" element={<EditarAlumno alumnos={alumnos} setAlumnos={setAlumnos} />} />
-
         <Route path="/acerca" element={<AcercaDe />} />
       </Routes>
     </Router>
