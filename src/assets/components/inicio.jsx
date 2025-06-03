@@ -1,8 +1,8 @@
 function Inicio() {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 rounded" style={{ backgroundColor: "#fff0f6" }}>
       <div className="row">
-        <h1 className="col text-center">
+        <h1 className="col text-center" style={{ color: "#cc3366" }}>
           Sistema de Gestión de Alumnos :)
         </h1>
       </div>
