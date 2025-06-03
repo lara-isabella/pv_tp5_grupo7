@@ -52,8 +52,8 @@ function IngresoAlumnos({ alAgregar }) {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="mb-4">Agregar Nuevo Alumno</h1>
+    <div className="container mt-4 p-4 rounded" style={{ backgroundColor: "#fff0f6" }}>
+      <h1 className="mb-3 text-center" style={{ color: "#cc3366" }}>Agregar Nuevo Alumno</h1>
       {error && <p className="text-danger">{error}</p>}
       <form onSubmit={manejarSubmit}>
         <div className="mb-3">
@@ -74,7 +74,7 @@ function IngresoAlumnos({ alAgregar }) {
         </div>
         <div className="mb-3">
           <label className="form-label">Email:</label>
-          <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="email" placeholder="ejemplo@correo.com" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
         <div className="mb-3">
           <label className="form-label">Domicilio:</label>
@@ -88,7 +88,7 @@ function IngresoAlumnos({ alAgregar }) {
           <input type="checkbox" className="form-check-input" id="estadoCheck" checked={estado} onChange={(e) => setEstado(e.target.checked)} />
           <label className="form-check-label" htmlFor="estadoCheck">Activo</label>
         </div>
-        <button type="submit" className="btn btn-primary">Agregar Alumno</button>
+        <button type="submit" className="btn btn-primary" style={{ backgroundColor: "#f497b6", color: "white" }} >Agregar Alumno</button>
       </form>
     </div>
   );

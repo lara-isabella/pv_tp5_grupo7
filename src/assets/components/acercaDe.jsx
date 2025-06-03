@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from '../images/logogrupo7.png';
 
 function AcercaDe() {
   return (
@@ -40,8 +41,24 @@ function AcercaDe() {
             </div>
         </div>
       </div>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-md-6">
+            <h4 className="text-center">Este trabajo fue realizado por el Grupo 7 de la Comisión Práctica 2, como parte de la materia Programación Visual.</h4>
+            <h5 className="text-center">El grupo consiste de los alumnos de la Escuela de Minas:</h5>
+            <p>Cari, Lautaro – @LauchaS2</p>
+            <p>Colazo, Lara – @lara-isabella</p>
+            <p>Obeide, Tomás – @TomiObeide</p>
+            <p>Pereira, Luisana – @lulipereira</p>
+            <p>Quipildor, Yamila – @yamqp</p>
+          </div>
+          <div className="col-md-6">
+            <img src={logo} alt="Logo" style={{ width: "auto" }} />
+          </div>
+        </div>
+      </div>
       <div className="d-flex justify-content-center mt-3">
-        <Link className="btn btn-primary" to="/">Volver al inicio</Link>
+        <Link className="btn btn-primary" style={{ backgroundColor: "#f497b6", color: "white" }} to="/">Volver al inicio</Link>
       </div>
     </div>
   );
