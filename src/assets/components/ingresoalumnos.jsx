@@ -48,84 +48,97 @@ function IngresoAlumnos({ alAgregar }) {
   };
 
   return (
-    <div>
-      <h1>Agregar Nuevo Alumno</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="container mt-4">
+    <h1 className="mb-4"> Agregar Nuevo Alumno </h1>
+      {error && <p className="text-danger">{error}</p>}
       <form onSubmit={manejarSubmit}>
-        <div>
-          <label>LU:</label>
+        <div className="mb-3">
+          <label className="form-label">LU:</label>
           <input
             type="text"
+            className="form-control"
             value={lu}
             onChange={(e) => setLu(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Nombre:</label>
+        <div className="mb-3">
+          <label className="form-label">Nombre:</label>
           <input
             type="text"
+            className="form-control"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Apellido:</label>
+        <div className="mb-3">
+          <label className="form-label">Apellido:</label>
           <input
             type="text"
+            className="form-control"
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Curso:</label>
+        <div className="mb-3">
+          <label className="form-label">Curso:</label>
           <input
             type="text"
+            className="form-control"
             value={curso}
             onChange={(e) => setCurso(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Email:</label>
+        <div className="mb-3">
+          <label className="form-label">Email:</label>
           <input
             type="email"
+            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Domicilio:</label>
+        <div className="mb-3">
+          <label className="form-label">Domicilio:</label>
           <input
             type="text"
+            className="form-control"
             value={domicilio}
             onChange={(e) => setDomicilio(e.target.value)}
           />
         </div>
-        <div>
-          <label>Teléfono:</label>
+        <div className="mb-3">
+          <label className="form-label">Teléfono:</label>
           <input
             type="tel"
+            className="form-control"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
           />
         </div>
-        <div>
-          <label>Estado:</label>
+        <div className="form-check mb-3">
           <input
             type="checkbox"
+            className="form-check-input"
+            id="estadoCheck"
             checked={estado}
             onChange={(e) => setEstado(e.target.checked)}
           />
-          Activo
+          <label className="form-check-label" htmlFor="estadoCheck">
+            Activo
+          </label>
         </div>
-        <button type="submit">Agregar Alumno</button>
+        <button type="submit" className="btn btn-primary">
+          Agregar Alumno
+        </button>
       </form>
     </div>
   );
+
 }
 
 export default IngresoAlumnos;
