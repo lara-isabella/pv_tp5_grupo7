@@ -5,7 +5,6 @@ function EditarAlumno({ alumnos, setAlumnos }) {
   const { lu } = useParams(); 
   const navigate = useNavigate();
 
-  //Buscar alumno con Libreta Universitaria
   const alumno = alumnos.find((a) => a.lu === lu);
 
   const [formData, setFormData] = useState({
@@ -26,7 +25,6 @@ function EditarAlumno({ alumnos, setAlumnos }) {
     }
   }, [alumno, navigate]);
 
-  //Manejo de cambio en inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
